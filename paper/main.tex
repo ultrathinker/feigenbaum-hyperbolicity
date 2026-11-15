@@ -1,0 +1,11 @@
+%% arXiv version: the complete text in one document.
+%% pdflatex main && bibtex main && pdflatex main && pdflatex main
+\documentclass[11pt,reqno]{amsart}
+\input{preamble}
+\begin{document}
+\input{frontmatter}
+\input{body}
+\input{backmatter}
+\bibliographystyle{amsplain}
+\bibliography{refs}
+\end{document}

@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite the Zenodo record below."
+title: "Existence and hyperbolicity of the period-doubling renormalization fixed point for non-integer critical exponents"
+type: software
+authors:
+  - family-names: Borzenkov
+    given-names: Yevhen
+    orcid: "https://orcid.org/0009-0002-7946-589X"
+doi: "10.5281/zenodo.22306911"
+date-released: "2026-09-05"
+license: MIT
+repository-code: "https://github.com/ultrathinker/feigenbaum-hyperbolicity"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22306911"
+    description: "Zenodo deposit of the proof package"
+keywords:
+  - Feigenbaum
+  - period-doubling renormalization
+  - non-integer critical exponent
+  - hyperbolicity
+  - computer-assisted proof
+  - interval arithmetic

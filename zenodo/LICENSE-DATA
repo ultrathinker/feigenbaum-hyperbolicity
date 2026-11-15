@@ -1,0 +1,37 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 Yevhen Borzenkov
+
+Scope: the interval certificates (03-CERTIFICATES/), the data (05-DATA/) and
+the accompanying documentation of the verification package (00-README.md,
+01-ARTICLE.md, 02-REPRODUCE.md, 05-DATA-INDEX.md, 06-REFERENCES.md).
+
+The source code of the package (04-CODE/ and _manifest.py) is released under
+the MIT licence instead; see LICENSE.
+
+You are free to:
+
+  Share  — copy and redistribute the material in any medium or format
+  Adapt  — remix, transform, and build upon the material for any purpose,
+           even commercially
+
+under the following term:
+
+  Attribution — You must give appropriate credit, provide a link to the
+  licence, and indicate if changes were made. You may do so in any reasonable
+  manner, but not in any way that suggests the licensor endorses you or your
+  use.
+
+No additional restrictions — you may not apply legal terms or technological
+measures that legally restrict others from doing anything the licence permits.
+
+Suggested citation:
+
+  Y. Borzenkov, Verification package for "Existence and hyperbolicity of the
+  period-doubling renormalization fixed point for non-integer critical
+  exponents", Zenodo, 2026, DOI: ZENODO-DOI-PENDING.
+
+The full legal text of CC BY 4.0 is at:
+https://creativecommons.org/licenses/by/4.0/legalcode
+
+THE MATERIAL IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.

@@ -1,0 +1,298 @@
+
+\section*{Reproducibility}
+
+Every numerical claim that enters the proof of Theorems A--D is traceable to a
+machine-readable certificate in the accompanying verification package, save for
+the few premises named below that are established by hand or by inspection
+instead, and one that is not checked at all: the correctness of the interval
+arithmetic itself, which no computer-assisted proof in this field checks. The
+article also prints numbers that carry no proof, and each is marked as such
+where it stands --- at the number, or at the paragraph or section that holds it
+--- and \textbf{that labelling, and not any list, is what the
+reader should go by}. They fall into two kinds, and the instances named below
+are the principal ones rather than an exhaustive roll.
+\emph{Not rigorous:} quantities
+computed in floating point and labelled so on the spot --- the eigenvalue
+$\lambda_{2}$ as a function of $\ell$ (\S\ref{sec:7.4}), the exploratory scan
+of the constants over the segment (\S\ref{sec:7}), the diagnostics of the
+routes that failed (\S\ref{sec:4.2}), $\mathrm{cond}(M')$ at $\ell = 5/2$ and
+the diagnostic finite-difference agreement quoted at $\ell = 5/2$ (both
+\S\ref{sec:5.3.3}), and the
+cross-assembly of $\DT$ by finite differences at three interior points
+(\S\ref{sec:3.9}).
+\ifx\JOURNALVERSION\undefined
+The side observation on the family $\alpha^{-k\ell}$ and the one-off
+experiments on how far the floor in the model self-check can be pushed down are
+of the same kind and are labelled in the same way.
+\else
+Two further quantities of this kind --- the side observation on the family
+$\alpha^{-k\ell}$ (\S\ref{sec:8}) and the one-off experiments on how far the
+floor in the model self-check can be pushed down (\S\ref{sec:3.10}) --- are not
+printed in this article at all: the labelling rule applies to them where they
+stand, in that document.
+\fi
+The labelling rule is about quantities computed from the object under study.
+Three kinds of printed number fall outside it and are not marked individually:
+reported run times; inventory counts --- counts of files, of stored records or
+of sampled points, and dataset sizes; and the parameters and coordinates of the
+computation itself --- working precisions, truncation orders, numbers of nodes
+and arcs, file and line references, and dates. A wall clock reading, like a
+count of files or a working precision, is a description of how the work was
+done, never a claim about the fixed point, and none of them appears in any
+inequality. The counts that do carry statements --- the 46 existence boxes, the
+706 tube boxes --- are not of this kind and are certified like everything else.
+\emph{Rigorous but not recomputed from the package:} products that are
+cross-checked against the certificate values rather than rebuilt by the
+acceptance run --- \notrecomputedroll{}
+
+One qualification belongs here rather than only at its own place. The two
+elementary conditions (E1)--(E2) of \S\ref{sec:10.2} --- $|c'| < r'$ and
+$|1-c'| < r'$ --- are premises of the lemmas behind Theorem D, and although the
+parameters $(c', r')$ they constrain come from the certificates, the
+inequalities themselves are not gated by the \texttt{one\_box} certifier; they
+are checked separately, for every deposited layer and cell, by the numbers gate
+(\texttt{tests/\allowbreak \_\allowbreak numbers\_\allowbreak check.py}, block K4:
+$40$ objects, worst case $(0.70, 0.75)$ with margin $0.05$).
+Every other premise of Theorems A--D that is meant to be machine-checked is
+gated automatically, with no exception. The box \texttt{t0695}, whose
+intersection with $[2,4]$ degenerates to a point, was one until the containment
+check stopped clipping to $[2,4]$ before comparing: $[4.0000, 4.0012]
+\subset \texttt{gtop} = [3.9775, 4.0075]$, so the term \texttt{extra} is
+justified on it as well (premise a7). Nothing in the
+statement about $[2,4]$ rests on it, and \S\ref{sec:4.8} says so at the place
+where the covering is closed. The premises that are proved analytically rather
+than gated are marked \texttt{[P]} in
+Table~\ref{tab:10.11-proof}, the map of the proof, and the one
+premise that is neither --- the correctness of the interval arithmetic itself
+(premise A4) --- is listed in Table~\ref{tab:10.11-assumptions}, the registry
+of assumptions, as common to the whole field and not checked
+here.
+One premise outside Theorems A--D is in the same position: the
+single-valuedness of the branch $U_G^{5/2}$ over the Kantorovich ball at
+$\ell = 5/2$ rests on an order-of-magnitude estimate rather than on a gate, as
+\appref{sec:5} states at the point of use. It is one premise but it stands in
+two places --- the existence certificate (\texttt{kant\_\allowbreak l25.json})
+and the hyperbolicity certificate (\texttt{eigen\_\allowbreak l25.json},
+\texttt{hyperb\_\allowbreak l25.json}), neither of which gates
+$\Real U$ --- and both are independent pointwise verifications that carry no
+step of Theorems A--D.
+The package carries the
+engine, the certificates it produced, the tests that falsify the majorants, and
+a SHA-256 manifest of all 960 files. Two inputs are deliberately not in it, and
+each is identified at the point where it is used: the march bank behind the
+independent cross-check of \S\ref{sec:3.8}, and the driver script of
+the acceptance run, \texttt{verify\_\allowbreak pkg.sh}, which is supplied to the
+referee separately --- the individual gate scripts that it calls are in the
+package. All
+dependencies are open source; the interval computations use the Arb ball
+arithmetic \cite{johansson2017arb} through \texttt{python-flint} 0.9.0
+\cite{pythonflint} (FLINT 3.6.0 \cite{flint}).
+
+A reviewer who wants to check the work without reading the code in full can do
+so in five steps, in this order; the fifth is two separate runs, so six
+programs of the package --- besides the external check named in step 1, which
+the package cannot perform on itself:
+
+\begin{enumerate}
+\item \texttt{python \_\allowbreak manifest.py verify} --- the package matches its manifest.
+  The verifier is itself part of the manifest and therefore cannot certify
+  itself; check at least once with an external tool, for instance
+  \texttt{sha256sum -c -{}-quiet MANIFEST.sha256}.
+\item \texttt{python 04-\allowbreak CODE/\allowbreak tests/\allowbreak \_\allowbreak classic\_\allowbreak constants.py} --- the engine reproduces
+  the published Feigenbaum values $\delta$ and $\alpha$ at the endpoints of the
+  interval (15 digits for $\delta$ and 14 for $\alpha$ at $\ell = 2$). This is a check external to the
+  derivation of the derivative.
+\item \texttt{python 04-\allowbreak CODE/\allowbreak tests/\allowbreak \_\allowbreak tau\_\allowbreak test.py} --- the tail majorants really are
+  majorants: the test is built so that the pre-correction version must fail.
+\item \texttt{python 04-\allowbreak CODE/\allowbreak cert.py} on one existence box --- for instance
+  the anchor \texttt{ganchor} ($\ell_{0} = 3$) --- checked against
+  \texttt{03-\allowbreak CERTIFICATES/\allowbreak existence/\allowbreak }. This script is the
+  command-line runner over the existence engine that the article cites by file
+  and line as \texttt{rig2fix3.py}: it imports that module and is not a second
+  implementation.
+\item \texttt{python 04-\allowbreak CODE/\allowbreak tube\_\allowbreak run.py} on one lane of the plan, checked
+  against \texttt{03-\allowbreak CERTIFICATES/\allowbreak tube/\allowbreak }, and
+  \texttt{04-\allowbreak CODE/\allowbreak tube\_\allowbreak accept.py} for the full acceptance run.
+  \texttt{tube\_\allowbreak run.py} is the lane driver: it certifies the boxes of one lane
+  through \texttt{hyp\_\allowbreak rouche.py} and the tube engine \texttt{tube\_\allowbreak lib.py}, both
+  of which the article cites by name at the places where they are used.
+  \texttt{tube\_\allowbreak accept.py} builds no
+  certificate of its own: it reads the box files, recomputes the full test from
+  their fields in interval arithmetic, and applies the acceptance conditions of
+  \S\ref{sec:4.8} to the whole chain.
+\end{enumerate}
+
+Expected numbers for each step are listed in the reproduction guide inside the
+package.
+
+\textbf{Which of them are reproducible, and in what sense.} Steps 1--3 read the
+deposited artefacts and recompute verdicts from their fields; they are deterministic
+for a fixed library stack and must give exactly the printed numbers. Steps 4 and 5 are
+not of that kind: they \emph{regenerate} a certificate, and the float seed
+\texttt{solve\_\allowbreak fixed\_\allowbreak point} behind $Y0$, $\tau_{F}$,
+$\rho^{\star}_{b}$ and $\mathrm{extra}$ is not deterministic across library builds
+(\S\ref{sec:3.6}, \S\ref{sec:3.7}: $Y0$ varies by tens of percent between runs, and on an
+independent regeneration the degenerate box \texttt{gtop} was observed at
+$\mathrm{extra} = 2.96\cdot 10^{-6}$, above the maximum printed here). A regeneration
+that returns different values of these four quantities is therefore not a failure to
+reproduce. What must hold on a regeneration is the verdict, not the digits: the
+Newton--Kantorovich gate passes at the same $\rho'$, $N_p$ and $K$, and the resulting
+ball still lies inside the uniqueness ball $1.75\cdot 10^{-7}$. The constants printed in
+Theorems A--C are upper bounds attained by the \emph{deposited} run; they are held to the
+manifest, not to any future one.
+
+\paragraph{What the acceptance run does and does not establish.} The driver
+\texttt{verify\_\allowbreak pkg.sh} performs \textbf{26} checks --- the package
+tests, the acceptance runs and the external cross-checks --- and a clean run
+reports all 26 passing. That statement should be read for exactly what it is:
+the verdict scripts of the package pass on the packaged artefacts. The run
+reads the 752 box certificates and the layer certificates as data and
+recomputes the tests from their fields; it does not regenerate them. Steps 4
+and 5 of the route above are where a reader regenerates one existence box and
+one lane of the tube.
+Three things it cannot establish by its internal-consistency gates alone ---
+the principal ones, not a closed list. The limits already named above in this
+section are limits of the same run and are not repeated here: the premises
+(E1)--(E2), checked by the numbers gate rather than by the certifier; the
+premises proved analytically and marked \texttt{[P]}; and the products that are
+cross-checked against the certificates rather than rebuilt by the run.
+One further limit belongs here, because the article leans on the mechanism
+five times: the three checks that read prose ---
+\texttt{\_\allowbreak numbers\_\allowbreak check.py},
+\texttt{\_\allowbreak refs\_\allowbreak check.py} and
+\texttt{\_\allowbreak appendix\_\allowbreak check.py} --- read the package's
+own copy of the article, \texttt{01-\allowbreak ARTICLE.md}, and not this
+manuscript --- a Russian-language copy --- and no gate of the package opens a
+\TeX{} file at all. What they
+certify is that the numbers, addresses and field names of that copy agree with
+the artefacts. The manuscript is held to the same numbers by hand, and its
+agreement with the package copy is not machine-checked. Two
+checks of the run reach past those gates, in different ways: one compares
+against data external to the package
+(\texttt{\_\allowbreak classic\_\allowbreak constants.py}), the other steps
+outside the certificates' own fields by rebuilding $\DT$ along a second,
+independent route
+(\texttt{\_\allowbreak dt\_\allowbreak fd\_\allowbreak cross.py}). It is these
+two, not the count of passing gates, that bear on the second item below:
+
+\begin{itemize}
+\item \textbf{The correctness of the interval arithmetic itself.} The gates
+  that carry the proof verify their inequalities \emph{under} the ball
+  arithmetic of \texttt{python-flint}/\texttt{arb}, and a systematic error in
+  its rounding would turn them green on a false result. Not every step of the
+  run is of that kind, and those that are not say so where they stand ---
+  among them the
+  finite-difference cross-assembly compares
+  a difference whose truncation is not rigorously enclosed against a fixed
+  threshold (\S\ref{sec:3.9}); the \texttt{kmode} step measures a distance in
+  float64 after casting down from \texttt{arb} (\S\ref{sec:9}). None of the
+  latter carries a claim of Theorems A--D. The risk here is premise A4 of the
+  registry in \S\ref{sec:10.11}, external to this work and common to the field.
+\item \textbf{A coordinated error shared by the model and the engine.} If the
+  code that assembles the centre $P(\ell)$ or the operator value carried a
+  systematic shift, both the certificate and the check that recomputes it from
+  the certificate's own fields would move together, and the gates would pass;
+  \S\ref{sec:4.10} makes the same point about a gate not seeing what makes its
+  own quantity smaller. The two checks named above bear on it, and neither
+  closes it. The agreement with the classical constants of the literature is
+  decisive but lives \textbf{at the two ends of the segment} only ---
+  \S\ref{sec:3.9} says of it, in those words, ``only at the ends, along the
+  leading mode, and no more than that''. The
+  finite-difference assembly of $\DT$ is run \emph{by the driver} at
+  \textbf{one} interior point, $\ell = 3$, the two others ($\ell = 5/2$ and
+  $\ell = 3.9$) being reproduced by hand with a command-line argument
+  (\S\ref{sec:3.9}); so no automatically run check assembles $\DT$ a second
+  time at a \textbf{non-integer} interior $\ell$, by a route independent of
+  the analytic derivative. And --- as \S\ref{sec:3.9} states in
+  those words --- it is independent of the derivation of the \emph{derivative},
+  but not of the engine as a whole: it calls the same operator-value code
+  \texttt{compute\_\allowbreak F\_\allowbreak poly}. An error in that code
+  would therefore be shared by the certificates, by the tube, by the anchor and
+  by this cross-check alike. For interior $\ell$ that is the weakest link in
+  the whole construction, and we state it here rather than let the count of
+  passing gates suggest that something closes it.
+\item \textbf{The provenance of the artefacts.} \texttt{\_manifest.py} checks
+  the bytes against its own list and is itself listed in that manifest, so it
+  cannot certify itself; step~1 of the route above therefore calls an external
+  \texttt{sha256sum} as well. Nor can the run establish that the certificates
+  and the scripts are an independent realisation of the mathematics stated
+  here: they are one realisation, checked against itself.
+\end{itemize}
+
+\noindent A passing run is thus a necessary condition and a convenience, not a
+second proof. The reader who wants an independent handle should start from the
+two ends of the segment, where the values are known from the literature
+independently --- to $325$ digits at $\ell = 4$ (BOT, Table~II) and to
+thousands at $\ell = 2$, with which our own values agree to fourteen and
+fifteen digits respectively --- and from \S\ref{sec:3.9}.
+
+\section*{Data availability}
+
+All source code, interval certificates, verification scripts and the SHA-256
+manifest supporting the results of this article are openly available in a Zenodo
+archive --- with the exception named above, the driver script
+\texttt{verify\_\allowbreak pkg.sh} of the acceptance run, every gate script it calls being
+in the archive --- version DOI: \texttt{10.5281/\allowbreak zenodo.\allowbreak 22306911} (all versions: \texttt{10.5281/\allowbreak zenodo.\allowbreak 22306910}).
+That script, its instructions
+(\texttt{README-verify.md}) and the retroactive check of the logarithm tail
+(\texttt{logtail\_\allowbreak retro.py}) are \emph{not part of the package}
+either: all three are
+submitted to the editorial office together with
+this manuscript, as separate files, and are to be passed to the referee with
+it. Their SHA-256 digests are
+\begin{flushleft}\footnotesize\ttfamily
+verify\_pkg.sh\\
+a52ec3ca8f891835ca4a27b500916f44f9610f7480f14fa12f79e32caf090766\\[2pt]
+README-verify.md\\
+a024110ca18047a4c44a313081a55fd3b50e8ea58e757f8c82a7f4cf8113bafc\\[2pt]
+logtail\_retro.py\\
+ce695a4e3a042cc2e1395d747dddf46a746cea32b1f03523ac71e9fd4546d855
+\end{flushleft}
+\noindent The version DOI is the one to follow: the proof depends on the exact file hashes, and the concept DOI resolves to whatever version is newest. Every numerical claim that enters the proof of
+Theorems A--D is traceable to a machine-readable certificate indexed in that
+archive; the Reproducibility section lists the numbers that are not.
+Exploratory and one-off computations were carried out in the course of this
+work whose outputs are not deposited: the recomputation of $|\lambda_{2}|$ and
+$|\lambda_{3}|$ beyond $\ell = 4$ (\S\ref{sec:7.4}), the bank of march
+certificates behind the independent cross-check of \S\ref{sec:3.8}, and a
+number of smaller diagnostic runs. \textbf{Each is identified as undeposited at
+the point where its result is quoted}; that labelling, and not any list, is
+what the reader should go by. No step of any proof in this article depends on
+data outside the archive.
+
+\ifx\JOURNALVERSION\undefined
+The material that the journal version carries as separate supplementary
+sections --- what the certificates do not establish, the exploratory scan of
+the constants over $\ell$, the numerical side observation on the family
+$\alpha^{-k\ell}$, and the layer diagnostics --- is presented inline in this
+preprint, and is deposited in the same Zenodo archive.
+\else
+The supplementary material referred to in the text (sections numbered
+$\mathrm{S}n$) is a separate document: it states what the certificates do not
+establish, reports the exploratory float scan of the constants over $\ell$,
+describes the numerical side observation on the family $\alpha^{-k\ell}$, and
+collects the layer diagnostics. It
+carries no step of any proof in this article --- every step of every proof,
+including the derivation of the $\tau$ bounds behind Theorem A and the
+certification protocols behind Theorem D, is in the article itself, in the
+appendices. The supplementary material is submitted alongside the manuscript,
+is included in full in the preprint version, and is deposited in the same
+Zenodo archive.
+\fi
+
+\section*{Declarations}
+
+\subsection*{Funding}
+This research did not receive any specific grant from funding agencies in the
+public, commercial, or not-for-profit sectors.
+
+\subsection*{Competing interests}
+The author declares no competing interests.
+
+\subsection*{Author contributions}
+Sole author: conceptualization, proofs, software, writing.
+
+\subsection*{Acknowledgements}
+The author thanks Fredrik Johansson and the \texttt{python-flint} developers for
+the Arb ball arithmetic library on which every rigorous bound in this work
+rests.

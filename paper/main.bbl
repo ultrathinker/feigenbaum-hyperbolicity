@@ -1,0 +1,218 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{10}
+
+\bibitem{arioli2010critical}
+G.~Arioli and H.~Koch, \emph{{The critical renormalization fixed point for
+  commuting pairs of area-preserving maps}}, {Comm. Math. Phys.} \textbf{295}
+  (2010), no.~2, 415--429.
+
+\bibitem{avila2011full}
+A.~Avila and M.~Lyubich, \emph{{The full renormalization horseshoe for unimodal
+  maps of higher degree: exponential contraction along hybrid classes}}, {Publ.
+  Math. IH\'ES} \textbf{114} (2011), 171--223.
+
+\bibitem{breden2024validated}
+M.~Breden, J.~Gonzalez, and J.~D. Mireles~James, \emph{{Validated enclosure of
+  renormalization fixed points via {C}hebyshev series and the {DFT}}}, Found.
+  Comput. Math. (2026), published online 7 July 2026; preprint arXiv:2409.20457
+  (2024).
+
+\bibitem{briggs1991precise}
+K.~Briggs, \emph{{A precise calculation of the {F}eigenbaum constants}}, {Math.
+  Comp.} \textbf{57} (1991), no.~195, 435--439.
+
+\bibitem{briggs1997thesis}
+\bysame, \emph{{Feigenbaum Scaling in Discrete Dynamical Systems}}, Ph.D.
+  thesis, University of Melbourne, 1997.
+
+\bibitem{broadhurst1999feigenbaum}
+D.~J. Broadhurst, \emph{{Feigenbaum constants to 1018 decimal places}}, 1999,
+  Unpublished computational note, March 22, 1999;
+  \url{http://pi.lacim.uqam.ca/piDATA/feigenbaum.txt} (mirror:
+  \url{http://www.plouffe.fr/simon/constants/feigenbaum.txt}).
+
+\bibitem{burbanks2021rigorous}
+A.~D. Burbanks, A.~H. Osbaldestin, and J.~A. Thurlby, \emph{{Rigorous
+  computer-assisted bounds on the period doubling renormalisation fixed point
+  and eigenfunctions in maps with critical point of degree 4}}, {J. Math.
+  Phys.} \textbf{62} (2021), 112701.
+
+\bibitem{collet1980universal}
+P.~Collet, J.-P. Eckmann, and O.~E. Lanford, \emph{{Universal properties of
+  maps on an interval}}, {Comm. Math. Phys.} \textbf{76} (1980), no.~3,
+  211--254.
+
+\bibitem{coullet1978iterations}
+P.~Coullet and C.~Tresser, \emph{{It\'erations d'endomorphismes et groupe de
+  renormalisation}}, {C. R. Acad. Sci. Paris S\'er.\ A-B} \textbf{287} (1978),
+  no.~7, A577--A580, see also J. Phys. Colloques \textbf{39} (1978),
+  C5-25--C5-28, \texttt{10.1051/jphyscol:1978513}.
+
+\bibitem{cruz2010renormalization}
+J.~Cruz and D.~Smania, \emph{{Renormalization for critical orders close to
+  $2N$}}, preprint, arXiv:1001.1271, 2010.
+
+\bibitem{cvitanovic1989universality}
+P.~Cvitanovi\'{c} (ed.), \emph{{Universality in Chaos}}, 2nd ed., Adam Hilger,
+  Bristol, 1989.
+
+\bibitem{eckmann1987complete}
+J.-P. Eckmann and P.~Wittwer, \emph{{A complete proof of the {F}eigenbaum
+  conjectures}}, {J. Statist. Phys.} \textbf{46} (1987), no.~3--4, 455--475.
+
+\bibitem{epstein1986new}
+H.~Epstein, \emph{{New proofs of the existence of the {F}eigenbaum functions}},
+  {Comm. Math. Phys.} \textbf{106} (1986), no.~3, 395--426.
+
+\bibitem{epstein1989fixed}
+\bysame, \emph{{Fixed points of composition operators {II}}}, {Nonlinearity}
+  \textbf{2} (1989), no.~2, 305--310.
+
+\bibitem{feigenbaum1978quantitative}
+M.~J. Feigenbaum, \emph{{Quantitative universality for a class of nonlinear
+  transformations}}, {J. Statist. Phys.} \textbf{19} (1978), no.~1, 25--52.
+
+\bibitem{feigenbaum1979universal}
+\bysame, \emph{{The universal metric properties of nonlinear transformations}},
+  {J. Statist. Phys.} \textbf{21} (1979), no.~6, 669--706.
+
+\bibitem{gautschi1967computational}
+W.~Gautschi, \emph{{Computational aspects of three-term recurrence relations}},
+  {SIAM Review} \textbf{9} (1967), no.~1, 24--82.
+
+\bibitem{gohberg1971operator}
+I.~C. Gohberg and E.~I. Sigal, \emph{{An operator generalization of the
+  logarithmic residue theorem and the theorem of {R}ouch\'e}}, {Math. USSR-Sb.}
+  \textbf{13} (1971), no.~4, 603--625.
+
+\bibitem{gorbovickis2018renormalization}
+I.~Gorbovickis and M.~Yampolsky, \emph{{Renormalization for unimodal maps with
+  non-integer exponents}}, {Arnold Math. J.} \textbf{4} (2018), 179--191.
+
+\bibitem{horn1991topics}
+R.~A. Horn and C.~R. Johnson, \emph{{Topics in {M}atrix {A}nalysis}}, Cambridge
+  University Press, Cambridge, 1991.
+
+\bibitem{humao1982period}
+B.~Hu and J.~M. Mao, \emph{{Period doubling: Universality and critical-point
+  order}}, {Phys. Rev. A} \textbf{25} (1982), no.~6, 3259--3261.
+
+\bibitem{johansson2017arb}
+F.~Johansson, \emph{{Arb: efficient arbitrary-precision midpoint-radius
+  interval arithmetic}}, {IEEE Trans. Computers} \textbf{66} (2017), no.~8,
+  1281--1292.
+
+\bibitem{pythonflint}
+F.~Johansson and {python-flint contributors}, \emph{{python-flint: Python
+  bindings for FLINT}}, \url{https://github.com/flintlib/python-flint}, 2025,
+  version 0.9.0.
+
+\bibitem{kantorovich1948newton}
+L.~V. Kantorovich, \emph{{On {N}ewton's method for functional equations}},
+  {Dokl. Akad. Nauk SSSR} \textbf{59} (1948), 1237--1240.
+
+\bibitem{kato1976perturbation}
+T.~Kato, \emph{{Perturbation Theory for Linear Operators}}, 2nd ed.,
+  Grundlehren der mathematischen Wissenschaften, vol. 132, Springer, Berlin,
+  1976, Reprinted in Classics in Mathematics, Springer, 1995; the DOI resolves
+  to that reprint, whose chapter and section numbering is unchanged.
+
+\bibitem{knuth1997taocp2}
+Donald~E. Knuth, \emph{{The Art of Computer Programming, Volume 2:
+  Seminumerical Algorithms}}, 3 ed., Addison-Wesley, Reading, MA, 1997, \S4.7
+  (power series); J. C. P. Miller's formula for $U^{a}$.
+
+\bibitem{krawczyk1969newton}
+R.~Krawczyk, \emph{{Newton-{A}lgorithmen zur {B}estimmung von {N}ullstellen mit
+  {F}ehlerschranken}}, {Computing} \textbf{4} (1969), no.~3, 187--201.
+
+\bibitem{lanford1982computer}
+O.~E. Lanford, III, \emph{{A computer-assisted proof of the {F}eigenbaum
+  conjectures}}, {Bull. Amer. Math. Soc. (N.S.)} \textbf{6} (1982), no.~3,
+  427--434.
+
+\bibitem{lanford1984shorter}
+\bysame, \emph{{A shorter proof of the existence of the {F}eigenbaum fixed
+  point}}, {Comm. Math. Phys.} \textbf{96} (1984), no.~4, 521--538.
+
+\bibitem{lyubich1999feigenbaum}
+M.~Lyubich, \emph{{Feigenbaum--{C}oullet--{T}resser universality and {M}ilnor's
+  hairiness conjecture}}, {Ann. of Math. (2)} \textbf{149} (1999), 319--420.
+
+\bibitem{mao1987corrections}
+J.-M. Mao and B.~Hu, \emph{{Corrections to scaling for period doubling}}, {J.
+  Statist. Phys.} \textbf{46} (1987), no.~1--2, 111--117.
+
+\bibitem{martens1998periodic}
+M.~Martens, \emph{{The periodic points of renormalization}}, {Ann. of Math.
+  (2)} \textbf{147} (1998), no.~3, 543--584.
+
+\bibitem{mcmullen1994complex}
+C.~McMullen, \emph{{Complex Dynamics and Renormalization}}, {Annals of
+  Mathematics Studies}, no. 135, Princeton University Press, Princeton, NJ,
+  1994.
+
+\bibitem{moore1966interval}
+R.~E. Moore, \emph{{Interval Analysis}}, Prentice-Hall, Englewood Cliffs, NJ,
+  1966.
+
+\bibitem{reick1992universal}
+C.~Reick, \emph{{Universal corrections to parameter scaling in period-doubling
+  systems: multiple scaling and crossover}}, {Phys. Rev. A} \textbf{45} (1992),
+  no.~2, 777--792.
+
+\bibitem{rump2010verification}
+S.~M. Rump, \emph{{Verification methods: rigorous results using floating-point
+  arithmetic}}, {Acta Numerica} \textbf{19} (2010), 287--449.
+
+\bibitem{stein1952theorems}
+P.~Stein, \emph{{Some general theorems on iterants}}, {J. Res. Nat. Bur.
+  Standards} \textbf{48} (1952), 82--83.
+
+\bibitem{stirnemann1994siegel}
+A.~Stirnemann, \emph{{Existence of the {S}iegel disc renormalization fixed
+  point}}, Nonlinearity \textbf{7} (1994), no.~3, 959--974.
+
+\bibitem{sullivan1992bounds}
+D.~Sullivan, \emph{{Bounds, quadratic differentials, and renormalization
+  conjectures}}, {Mathematics into the Twenty-First Century}, {AMS Centennial
+  Publications}, vol.~II, Amer. Math. Soc., Providence, RI, 1992, pp.~417--466.
+
+\bibitem{taussky1964matrices}
+O.~Taussky, \emph{{Matrices $C$ with $C^n \to 0$}}, {J. Algebra} \textbf{1}
+  (1964), 5--10.
+
+\bibitem{flint}
+{The FLINT team}, \emph{{FLINT: Fast Library for Number Theory}},
+  \url{https://flintlib.org}, 2025, version 3.6.0.
+
+\bibitem{oeisA006890}
+{The OEIS Foundation}, \emph{{OEIS {A006890}: {F}eigenbaum rate $\delta$,
+  decimal expansion}}, Online; accessed as the cross-check of the classical
+  constant. \url{https://oeis.org/A006890}.
+
+\bibitem{oeisA006891}
+\bysame, \emph{{OEIS {A006891}: reduction (scaling) parameter $\alpha$, decimal
+  expansion}}, Online; accessed as the cross-check of the classical constant.
+  \url{https://oeis.org/A006891}.
+
+\bibitem{tucker2011validated}
+W.~Tucker, \emph{{Validated Numerics: {A} Short Introduction to Rigorous
+  Computations}}, Princeton University Press, Princeton, NJ, 2011.
+
+\bibitem{vanderweele1987period}
+J.~P. van~der Weele, H.~W. Capel, and R.~Kluiving, \emph{{Period doubling in
+  maps with a maximum of order $z$}}, {Physica A} \textbf{145} (1987), no.~3,
+  425--460.
+
+\bibitem{wimmer1973ostrowski}
+H.~K. Wimmer, \emph{{On the {O}strowski--{S}chneider inertia theorem}}, {J.
+  Math. Anal. Appl.} \textbf{41} (1973), 164--169.
+
+\end{thebibliography}

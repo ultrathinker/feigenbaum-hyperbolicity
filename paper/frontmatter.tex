@@ -1,0 +1,45 @@
+%% Front matter shared by both versions.
+%% The abstract below is the journal version. The plain-text ASCII abstract
+%% for the arXiv submission form lives in docs/ARXIV-METADATA.txt and is
+%% pasted into the form by hand: arXiv does not read it from the PDF.
+
+\title[Hyperbolicity of renormalization at a non-integer exponent]
+      {Existence and hyperbolicity of the period-doubling renormalization
+       fixed point for non-integer critical exponents}
+
+\ifx\ANONYMOUS\undefined
+  \author{Yevhen Borzenkov}
+  \address{Independent researcher, Bratislava, Slovakia}
+  \urladdr{https://orcid.org/0009-0002-7946-589X}
+\fi
+
+\subjclass[2020]{Primary 37E20; Secondary 37E05, 37F25, 47H10, 65G20, 65G30, 37-04}
+\keywords{period-doubling renormalization; Feigenbaum--Cvitanovi\'{c} equation;
+unimodal maps; non-integer critical exponent; computer-assisted proof;
+interval arithmetic; Newton--Kantorovich theorem; Rouch\'{e}'s theorem;
+hyperbolic fixed point; Feigenbaum constants}
+
+\begin{abstract}
+We prove, by a computer-assisted argument with validated interval arithmetic,
+that for every critical exponent $\ell \in [2,4]$ the Feigenbaum--Cvitanovi\'{c}
+equation has a solution $\Gs(\ell)$, analytic on an explicit disk and normalized
+by $\Gs(0) = 1$, and that the derivative of the period-doubling renormalization
+at $\Gs(\ell)$, restricted to the normalization slice $G(0) = 1$, has exactly one
+eigenvalue outside the unit circle; this
+eigenvalue $\delta(\ell)$ is real and simple, and both $\Gs(\ell)$ and
+$\delta(\ell)$ depend real-analytically on $\ell$. The solution lies in a ball of
+radius $8.49 \cdot 10^{-13}$ around a computable parametrized center and is
+unique on the normalization slice within $1.75 \cdot 10^{-7}$. The proof verifies
+a Newton--Kantorovich gate over 46 intervals covering $[2,4]$ and an
+operator-valued Rouch\'{e} inequality over 706 intervals, with resolvent bound
+$3.7961$ on the unit circle and worst acceptance value $0.9919 < 1$. Unlike the
+computer-free proofs of Gorbovickis and Yampolsky and of Cruz and Smania, which
+hold in neighborhoods of even integers of unspecified width, the covering is
+explicit and uniform in $\ell$ and includes interior points such as
+$\ell = 5/2$ and $\ell = 3$. Independence of the spectrum from the choice of the
+layer $(c, r)$ is proved for an explicitly certified family of weighted
+$\ell^{1}$ spaces: a rectangle of layers around the working one, fourteen
+further layers, and a corridor joining the rectangle to one of the farthest of them.
+\end{abstract}
+
+\maketitle

@@ -1,0 +1,151 @@
+%% ------------------------------------------------------------------
+%%  preamble.tex — shared by the arXiv and the journal versions.
+%%  Compiles with pdflatex.  Keep this file free of any text content.
+%% ------------------------------------------------------------------
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm, mathrsfs}
+\usepackage{lmodern}
+\usepackage[expansion=false]{microtype}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+\usepackage{url}
+
+\IfFileExists{ANONYMOUS.txt}{\def\ANONYMOUS{1}}{}
+
+%% ---- theorem environments -----------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+%% Theorems A-D are lettered and stated in Section 2; they are NOT part
+%% of the numbered sequence above.
+\newtheorem{namedtheorem}{Theorem}
+\renewcommand{\thenamedtheorem}{\Alph{namedtheorem}}
+
+\newtheorem*{theoremCrestated}{Theorem C}
+\newtheorem*{lemmaone}{Lemma 1}
+\newtheorem*{lemmatwo}{Lemma 2}
+\newtheorem*{lemmathree}{Lemma 3}
+\newtheorem*{lemmafour}{Lemma 4}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\makeatletter
+\renewcommand{\LT@makecaption}[3]{%
+  \LT@mcol\LT@cols c{%
+    \hbox to\z@{\hss\parbox[t]\LTcapwidth{\@makecaption{#2}{#3}}\hss}}}
+\makeatother
+
+%% ---- notation ------------------------------------------------------
+\newcommand{\norm}[1]{\ensuremath{\lVert #1 \rVert}}                % ‖ · ‖
+\newcommand{\abs}[1]{\ensuremath{\lvert #1 \rvert}}
+\newcommand{\Aff}{\ensuremath{\mathcal{A}}}                          % 𝒜  = 1 + X_0
+\newcommand{\Ffam}{\ensuremath{\mathfrak{F}}}                        % 𝔉  certified family
+% 𝔉₀ — layers admitted by the certificate of §10.2. The article needs BOTH: the
+% four condition groups are a legitimate set, and the statements about how far
+% that set reaches (its geometry, its boundary, the P-version of Theorem D) are
+% about it; but Theorem D is proved only where the transfer of §10.7 is
+% certified as well, and its premise has to name that smaller family.
+\newcommand{\Ffamz}{\ensuremath{\mathfrak{F}_{0}}}                   % 𝔉₀ admitted by §10.2
+\newcommand{\Qcell}{\ensuremath{\mathfrak{Q}}}                       % 𝔔  continuum cell
+\newcommand{\Xz}{\ensuremath{X_{0}}}                                 % X₀
+\newcommand{\Gs}{\ensuremath{G^{\star}}}                             % G*  = G★ (unified)
+\newcommand{\DT}{\ensuremath{DT}}
+\newcommand{\Id}{\ensuremath{I}}
+\newcommand{\Real}{\operatorname{Re}}
+\newcommand{\Imag}{\operatorname{Im}}
+\newcommand{\Log}{\operatorname{Log}}
+\newcommand{\spec}{\operatorname{spec}}
+\newcommand{\inertia}{\operatorname{In}}
+\newcommand{\diam}{\operatorname{diam}}
+\newcommand{\conv}{\operatorname{conv}}
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\NN}{\ensuremath{\mathbb{N}}}
+\newcommand{\ZZ}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Dd}{\ensuremath{\mathbb{D}}}
+\newcommand{\eps}{\ensuremath{\varepsilon}}
+\newcommand{\then}{\ensuremath{\Rightarrow}}
+\newcommand{\code}[1]{\texttt{#1}}                      % file / field names
+%% N_MAX and N_W are identifiers of the code (tube_lib.py alone uses N_W 51
+%% times), and set as ordinary mathematics they print as "NW"/"NMAX" -- names
+%% a referee cannot grep for in the source. These two macros print the name
+%% with its underscore INSIDE mathematics, so one spelling serves both the
+%% prose and the summation limits of the displays, and no call site has to
+%% choose between them.
+\newcommand{\NW}{\mathtt{N\_W}}
+\newcommand{\NMAX}{\mathtt{N\_MAX}}
+\newcommand{\sect}[1]{\S#1}                             % cross-reference to a section
+
+%% Certificate gates and quantities that recur throughout the text.
+\newcommand{\Zhat}{\ensuremath{\widehat{Z}}}
+\newcommand{\Ahat}{\ensuremath{\widetilde{A}}}
+\newcommand{\Gbar}{\ensuremath{\overline{G}}}
+\newcommand{\Ubar}{\ensuremath{\overline{U}}}
+\newcommand{\Wbar}{\ensuremath{\overline{W}}}
+\newcommand{\Ghat}{\ensuremath{\widehat{G}}}
+\newcommand{\rhostar}{\ensuremath{\rho^{\star}}}
+\newcommand{\deltastar}{\ensuremath{\delta^{\star}}}
+
+%% ---- misc ----------------------------------------------------------
+\numberwithin{equation}{section}
+\allowdisplaybreaks
+\setlength{\emergencystretch}{3em}
+\hyphenation{re-nor-mal-iza-tion hy-per-bol-ic-i-ty}
+
+%% ---- addresses that change kind between builds ----------------------
+%% A label that is a section in the preprint becomes an appendix in the
+%% journal, so a plain \S\ref prints a bare-letter address (\S D, \S H) in the
+%% journal main text -- the very form the supplement header forbids. \appref
+%% renders each build's own kind, so the call sites carry no build knowledge.
+\ifx\JOURNALVERSION\undefined
+  \newcommand{\appref}[1]{\S\ref{#1}}
+\else
+  \newcommand{\appref}[1]{Appendix~\ref{#1}}
+\fi
+
+\newcommand{\notrecomputedroll}{%
+the pointwise anchors of \appref{sec:5} (tabulated in
+Appendix~\ref{sec:A}) --- with two exceptions at $\ell = 5/2$ that the run
+does rebuild, the bound $\min \Real U$
+(\texttt{tests/\allowbreak \_\allowbreak reu\_\allowbreak min\_\allowbreak l25.py})
+and the tail of $\norm{\bar{F}}_{X}$, line 38 of that appendix
+(\texttt{tests/\allowbreak \_\allowbreak xresid\_\allowbreak tail\_\allowbreak F\_\allowbreak l25.py}) ---
+the march bank of \S\ref{sec:3.8} and the transfer patch
+\texttt{q\_\allowbreak perturb\_\allowbreak patch.json} of \S\ref{sec:5.2.2},
+whose generator the package does not ship; they are itemised in
+\texttt{05-\allowbreak DATA-\allowbreak INDEX.md}. Two things that are
+\emph{not} on this list, and are easy to mistake for it: the mutation tests of
+the layer gates (\texttt{layer\_\allowbreak mutation1.py},
+\texttt{layer\_\allowbreak mutation2.py}) do run inside the acceptance run and
+are recomputed like everything else; and the one-off mutation runs of
+\S\ref{sec:3.3} and \S\ref{sec:4.10} are not in the package at all, and each is
+labelled as such where it stands.}
+
+\pdfstringdefDisableCommands{%
+  \def\ell{l}%
+  \def\tau{tau}%
+  \def\sigma{sigma}%
+  \def\lambda{lambda}%
+  \def\delta{delta}%
+  \def\alpha{alpha}%
+  \def\star{*}%
+  \def\CC{C}%
+  \def\Ffam{F}%
+  \def\Ffamz{F0}%
+  \def\Qcell{Q}%
+  \def\Gs{G*}%
+  \def\norm#1{||#1||}%
+}
